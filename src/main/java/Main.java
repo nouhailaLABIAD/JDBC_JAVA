@@ -13,10 +13,10 @@ public class Main {
         try {
             con = DriverManager.getConnection(url, username, mdp);
             System.out.println("Connexion reussie");
-            //ajouterPersonne(con, "oumayma", "labiad", 22);
+            ajouterPersonne(con, "oumayma", "labiad", 22);
             
-            //updatePerson(con);
-           // DeleteEtud(con,5);
+            updatePerson(con);
+            DeleteEtud(con,5);
             getPerson(con);
             
         } catch (SQLException e) {
@@ -46,10 +46,8 @@ public class Main {
     private static void getPerson(Connection con){
         String sql = "SELECT * FROM etudiant";
         try (PreparedStatement preparedStatement = con.prepareStatement(sql)) {
-                // Exécuter la requête
                 ResultSet resultSet = preparedStatement.executeQuery();
 
-                // Parcourir les résultats
                 while (resultSet.next()) {
                     int id = resultSet.getInt("id");
                     String nom = resultSet.getString("nom");
